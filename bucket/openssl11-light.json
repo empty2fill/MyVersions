@@ -1,0 +1,40 @@
+{
+    "homepage": "https://slproweb.com/products/Win32OpenSSL.html",
+    "version": "1.0.2u",
+    "license": {
+        "identifier": "OpenSSL|SSLeay",
+        "url": "https://www.openssl.org/source/license-openssl-ssleay.txt"
+    },
+    "description": "TLS/SSL toolkit (Light, 1.0.x branch)",
+    "architecture": {
+        "32bit": {
+            "url": "https://slproweb.com/download/Win32OpenSSL_Light-1_1_1n.exe",
+            "hash": "FD4E93AB630B171A12E49B5C48F087307A939CD04F2188B253EB3B46653051FB"
+        },
+        "64bit": {
+            "url": "https://slproweb.com/download/Win64OpenSSL_Light-1_1_1n.exe",
+            "hash": "5E6D32DDAD9F8B41E444A367F8FBA7E558731D175CFE14C1A337763619E957ED"
+        }
+    },
+    "innosetup": true,
+    "bin": "bin\\openssl.exe",
+    "env_set": {
+        "OPENSSL_CONF": "$dir\\bin\\openssl.cfg"
+    },
+    "checkver": ">Win32 OpenSSL v(1\\.1\\.[\\w]+)\\s+Light<",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://slproweb.com/download/Win64OpenSSL_Light-$underscoreVersion.exe"
+            },
+            "32bit": {
+                "url": "https://slproweb.com/download/Win32OpenSSL_Light-$underscoreVersion.exe"
+            }
+        },
+        "hash": {
+            "mode": "json",
+            "jp": "$.files.['$basename'].sha256",
+            "url": "https://raw.githubusercontent.com/slproweb/opensslhashes/master/win32_openssl_hashes.json"
+        }
+    }
+}
